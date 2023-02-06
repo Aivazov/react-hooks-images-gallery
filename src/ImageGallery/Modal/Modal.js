@@ -5,7 +5,6 @@ import './Modal.css';
 const modalRoot = document.querySelector('#modal-root');
 
 export default function Modal({ onClose, children }) {
-  console.log(children);
   useEffect(() => {
     window.addEventListener('keydown', handleEscape);
 
