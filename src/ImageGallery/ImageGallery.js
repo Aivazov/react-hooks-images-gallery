@@ -38,10 +38,7 @@ export default function ImageGallery() {
 
   useEffect(() => {
     if (!searchQuery) return;
-    // setTimeout(() => {
-      console.log('fetchImages');
-      fetchImages();
-    // }, 1000);
+    fetchImages();
   }, [searchQuery]);
 
   const onChangeQuery = (query) => {
@@ -58,6 +55,9 @@ export default function ImageGallery() {
     setIsLoading(true);
     fetchData(options)
       .then((images) => {
+        if (images.length === 0) {
+          return toast.warning('We found no matches. Please try again');
+        }
         setImages((prev) => [...prev, ...images]);
         setCurrentPage(currentPage + 1);
       })
