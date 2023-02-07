@@ -20,6 +20,7 @@ function fetchData({ searchQuery = '', currentPage = 1, pageSize = 12 }) {
       `https://pixabay.com/api/?key=${API_KEY}&q=${searchQuery}&page=${currentPage}&per_page=${pageSize}&image_type=photo&orientation=horizontal`
     )
     .then((res) => {
+      console.log(res.data.hits);
       return res.data.hits;
     });
 }
@@ -37,10 +38,10 @@ export default function ImageGallery() {
 
   useEffect(() => {
     if (!searchQuery) return;
-    setTimeout(() => {
+    // setTimeout(() => {
       console.log('fetchImages');
       fetchImages();
-    }, 1000);
+    // }, 1000);
   }, [searchQuery]);
 
   const onChangeQuery = (query) => {
@@ -57,8 +58,7 @@ export default function ImageGallery() {
     setIsLoading(true);
     fetchData(options)
       .then((images) => {
-        setImages([...images], images);
-
+        setImages((prev) => [...prev, ...images]);
         setCurrentPage(currentPage + 1);
       })
       .catch((error) => setError(error))
