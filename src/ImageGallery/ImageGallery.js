@@ -36,8 +36,12 @@ export default function ImageGallery() {
   const shouldRenderLoadMoreButton = images.length > 0 && !isLoading;
 
   useEffect(() => {
-    fetchImages();
-  }, [fetchData]);
+    if (!searchQuery) return;
+    setTimeout(() => {
+      console.log('fetchImages');
+      fetchImages();
+    }, 1000);
+  }, [searchQuery]);
 
   const onChangeQuery = (query) => {
     setSearchQuery(query);
