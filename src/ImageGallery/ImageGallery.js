@@ -73,8 +73,6 @@ export default function ImageGallery() {
   return (
     <div>
       <Searchbar onSubmit={onChangeQuery} />
-      {/* {images === [] &&
-          toast.warning('We found no matches. Please try again')} */}
       {error && toast.warning(`Something went wrong: ${error.message}`)}
 
       <ImageGalleryList items={images} modal={toggleModal} />
