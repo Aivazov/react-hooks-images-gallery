@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 import Searchbar from './Searchbar/Searchbar';
-import './Searchbar/Searchbar.css';
+// import './Searchbar/Searchbar.css';
 import ImageGalleryList from './ImageGalleryList/ImageGallery';
 import Loader from './Loader/Loader';
 import Button from './Button/Button';
